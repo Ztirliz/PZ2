@@ -1,8 +1,5 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 public class Task2 {
     public static void main() {
@@ -45,6 +42,8 @@ public class Task2 {
         double matchingIndex = calculateMatchingIndex(text);
         System.out.println("Індекс збігу ВТ: " + String.format("%.4f", matchingIndex));
 
+        List<String> keysList = new ArrayList<>();
+
         while (stopWord != "stop") {
             count++;
             String nameOfTextFile = "cipherText" + count + ".txt";
@@ -55,6 +54,7 @@ public class Task2 {
                 System.out.print("Введіть 2-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==2){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -67,6 +67,7 @@ public class Task2 {
                 System.out.print("Введіть 3-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==3){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -79,6 +80,7 @@ public class Task2 {
                 System.out.print("Введіть 4-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==4){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -91,6 +93,7 @@ public class Task2 {
                 System.out.print("Введіть 5-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==5){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -103,6 +106,7 @@ public class Task2 {
                 System.out.print("Введіть 6-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==6){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -115,6 +119,7 @@ public class Task2 {
                 System.out.print("Введіть 10-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==10){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -127,6 +132,7 @@ public class Task2 {
                 System.out.print("Введіть 15-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==15){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -139,6 +145,7 @@ public class Task2 {
                 System.out.print("Введіть 20-x значний ключ: ");
                 key = scanner.nextLine().toLowerCase().replaceAll("[^а-я]", "");
                 if (key.length()==20){
+                    keysList.add(key);
                     break;
                 }
                 else
@@ -171,7 +178,7 @@ public class Task2 {
 
             for (int i =0 ;i<doubles.size();i++) {
                 matchingIndex = doubles.get(i);
-                index.write("Індекс збігу для тексту " + (i+1) + " : " + String.format("%.4f", matchingIndex) + "\n");
+                index.write("Індекс збігу для тексту " + (i+1) + " з ключем  " + keysList.get(i) +" :" + String.format("%.4f", matchingIndex) + "\n");
             }
             index.close();
         } catch (IOException e) {
