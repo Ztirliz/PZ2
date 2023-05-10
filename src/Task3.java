@@ -32,6 +32,17 @@ public class Task3 {
                 }
             }
         }
+        try (FileWriter writer = new FileWriter("Dr.txt")) {
+            writer.write("Послідовність Dr \n\n");
+            for (Integer c : keyIndexCounts.keySet()) {
+
+                writer.write(c + ": " + keyIndexCounts.get(c) + "\n");
+            }
+        } catch (IOException e) {
+            System.out.println("Error reading input file: " + e.getMessage());
+            return;
+        }
+
 
         int maxValue = Collections.max(keyIndexCounts.values());
 
@@ -145,12 +156,13 @@ public class Task3 {
         // Розшифрування тексту за допомогою методу та запис у текстовий файл
         String decryptedText = decrypt(text, key);
         try (FileWriter writeDecryptText = new FileWriter(outputFilename)) {
+            writeDecryptText.write("Ключ - " + key + "\n\n");
             writeDecryptText.write(decryptedText);
         } catch (IOException e) {
             System.out.println("Error writing output file: " + e.getMessage());
             return;
         }
-        System.out.println(" ШТ з текстового файлу cipher.txt був успішно розшифрований у текстовий файл decrycptText.txt");
+        System.out.println("ШТ з текстового файлу cipher.txt був успішно розшифрований у текстовий файл decrycptText.txt");
 
 
 
